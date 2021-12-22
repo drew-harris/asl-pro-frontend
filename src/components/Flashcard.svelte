@@ -1,5 +1,9 @@
 <script>
   export let data;
+  import { createEventDispatcher } from "svelte";
+
+  // boilerplate required to produce events
+  const dispatch = createEventDispatcher();
   let flipped = false;
   function flip() {
     flipped = !flipped;
@@ -7,7 +11,11 @@
   function handleKeydown(event) {
     event.preventDefault();
     if (event.keyCode == 32) {
-      flip();
+      if (!flipped) {
+        flip();
+      } else {
+        dispatch("toNext");
+      }
     }
   }
 </script>
@@ -17,6 +25,7 @@
   <video src={"https://drewh.net/aslcards/" + data.filename} autoplay loop />
   {#if flipped}
     <div class="word">{data.word}</div>
+    <div class="tag">{data.tag}</div>
   {:else}
     <div class="click-hint">Show answer</div>
   {/if}
@@ -42,12 +51,22 @@
     margin: auto;
     text-align: center;
     color: black;
+    margin-top: 10px;
+  }
+
+  .tag {
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    color: rgb(199, 199, 199);
+    cursor: pointer;
   }
 
   .click-hint {
     margin: auto;
+    margin-top: 10px;
     text-align: center;
-    color: rgb(199, 199, 199);
+    color: rgb(116, 116, 116);
     cursor: pointer;
   }
 </style>
