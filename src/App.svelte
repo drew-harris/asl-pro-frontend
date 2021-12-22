@@ -1,5 +1,7 @@
 <script>
+  import Flashcard from "./components/Flashcard.svelte";
   let data = null;
+  let index = 0;
   fetch("https://drewh.net/aslapi/")
     .then((response) => {
       return response.json();
@@ -8,29 +10,28 @@
       data = passedData;
       console.log(passedData);
     });
+
+  function nextCard() {
+    index++;
+  }
 </script>
 
-{#if data != null}
-  <div class="card-container">
-    {#each data as card}
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">{card.word}</div>
-          <!-- svelte-ignore a11y-media-has-caption -->
-          <video
-            autoplay
-            loop
-            src={"https://drewh.net/aslcards/" + card.filename}
-          />
-        </div>
-      </div>
-    {/each}
-  </div>
-{/if}
+<div class="app-container">
+  {#if data != null}
+    {#key data[index]._id}
+      <Flashcard data={data[index]} />
+    {/key}
+  {/if}
+  <br />
+  <button on:click={nextCard}>Next card</button>
+</div>
 
 <style>
-  .card-container {
+  .app-container {
+    height: 90vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 </style>
