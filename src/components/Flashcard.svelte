@@ -41,7 +41,7 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <style>
-  @media only screen and (max-width: 600px) {
+  @media only screen and (min-width: 600px) {
     video {
       transform-origin: top;
       transform: scale(1.35);
