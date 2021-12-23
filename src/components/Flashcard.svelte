@@ -10,8 +10,8 @@
     flipped = !flipped;
   }
   function handleKeydown(event) {
-    event.preventDefault();
     if (event.keyCode == 32) {
+      event.preventDefault();
       if (!flipped) {
         flip();
       } else {
