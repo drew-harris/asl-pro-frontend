@@ -1,7 +1,7 @@
 <script>
   export let data;
   import { createEventDispatcher } from "svelte";
-  import { fade, fly } from "svelte/transition";
+  import { fly } from "svelte/transition";
 
   // boilerplate required to produce events
   const dispatch = createEventDispatcher();
@@ -51,7 +51,7 @@
     }
   }
   .card {
-    max-width: 500px;
+    max-width: 420px;
     border: 1px solid #c4c4c4;
     padding: 20px;
     margin: 10px auto;

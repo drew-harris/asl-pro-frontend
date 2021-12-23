@@ -44,7 +44,7 @@
 
   .tag {
     cursor: pointer;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 20px 10px 20px;
     flex-grow: 1;
     text-align: center;
   }

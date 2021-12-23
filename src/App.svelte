@@ -41,8 +41,10 @@
 </script>
 
 <div class="app-container">
+  <div class="hints">Space: Flip Card/Next Card</div>
   <TagSelect tagList={tags} on:newTag={applyFilter} />
   {#if filtered != null}
+    {index + 1} / {filtered.length}
     <div class="progress-container">
       <progress max={filtered.length} value={index} />
     </div>
@@ -53,22 +55,36 @@
     {/key}
   {/if}
   <div class="button-container">
-    <button on:click={nextCard}>Next card (Space)</button>
+    <button on:click={nextCard}>Next Card</button>
   </div>
 </div>
 
 <style>
+  @media only screen and (max-width: 600px) {
+    .hints {
+      display: none;
+    }
+  }
+  .hints {
+    color: rgb(148, 148, 148);
+    position: fixed;
+  }
   .app-container {
     padding-left: 12px;
     padding-right: 12px;
+    text-align: center;
   }
-  progress {
+  progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    box-shadow: none;
     margin: 10px auto;
     width: min(400px, 80vw);
+    height: 15px;
   }
 
   .progress-container {
-    margin: auto;
     display: flex;
   }
 
