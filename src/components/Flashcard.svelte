@@ -45,7 +45,7 @@
     max-width: 500px;
     border: 1px solid #c4c4c4;
     padding: 20px;
-    margin: 20px;
+    margin: 10px auto;
     border-radius: 4px;
     box-shadow: 0px 5px 4px rgba(95, 95, 95, 0.267);
   }

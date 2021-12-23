@@ -34,9 +34,10 @@
     }
   }
   .tag-container {
+    max-width: 500px;
     display: flex;
     border: 1px solid #c4c4c4;
-    margin: 20px;
+    margin: 12px auto;
     border-radius: 4px;
     box-shadow: 0px 5px 4px rgba(95, 95, 95, 0.267);
   }

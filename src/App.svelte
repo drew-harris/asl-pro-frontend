@@ -43,28 +43,40 @@
 <div class="app-container">
   <TagSelect tagList={tags} on:newTag={applyFilter} />
   {#if filtered != null}
-    <progress max={filtered.length} value={index} />
+    <div class="progress-container">
+      <progress max={filtered.length} value={index} />
+    </div>
   {/if}
   {#if filtered != null}
     {#key filtered[index]._id}
       <Flashcard data={filtered[index]} on:toNext={nextCard} />
     {/key}
   {/if}
-  <button on:click={nextCard}>Next card (Space)</button>
+  <div class="button-container">
+    <button on:click={nextCard}>Next card (Space)</button>
+  </div>
 </div>
 
 <style>
   .app-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-left: 12px;
+    padding-right: 12px;
   }
-
   progress {
+    margin: 10px auto;
     width: min(400px, 80vw);
   }
 
+  .progress-container {
+    margin: auto;
+    display: flex;
+  }
+
   button {
-    margin-top: 30px;
+    margin: 12px auto;
+  }
+
+  .button-container {
+    display: flex;
   }
 </style>
