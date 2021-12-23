@@ -41,6 +41,15 @@
 <svelte:window on:keydown={handleKeydown} />
 
 <style>
+  @media only screen and (max-width: 600px) {
+    video {
+      transform-origin: top;
+      transform: scale(1.35);
+    }
+    .video-container {
+      overflow: hidden;
+    }
+  }
   .card {
     max-width: 500px;
     border: 1px solid #c4c4c4;
@@ -53,12 +62,9 @@
     margin: auto;
     width: 100% !important;
     height: auto !important;
-    transform-origin: top;
-    transform: scale(1.35);
   }
 
   .video-container {
-    overflow: hidden;
     width: 100%;
   }
 
