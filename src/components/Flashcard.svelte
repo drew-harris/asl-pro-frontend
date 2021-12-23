@@ -22,8 +22,8 @@
 </script>
 
 <div
-  in:fly={{ x: 400, duration: 200, delay: 300 }}
-  out:fly={{ x: -400, duration: 200 }}
+  in:fly={{ x: 400, duration: 150, delay: 200 }}
+  out:fly={{ x: -200, duration: 150 }}
   on:click={flip}
   class="card"
 >
