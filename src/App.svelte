@@ -19,7 +19,6 @@
   }
 
   function nextCard() {
-    console.log(tags);
     if (index == filtered.length - 1) {
       index = -1;
     }
@@ -29,9 +28,14 @@
   function applyFilter(event) {
     console.log(event.detail.tag);
     console.log("applying tag", event.detail.tag);
+    index = 0;
     if (event.detail.tag == "") {
       filtered = data;
+      console.log(filtered);
       return;
+    } else {
+      filtered = data.filter((obj) => obj.tag == event.detail.tag);
+      console.log(filtered);
     }
   }
 </script>
@@ -39,20 +43,28 @@
 <div class="app-container">
   <TagSelect tagList={tags} on:newTag={applyFilter} />
   {#if filtered != null}
+    <progress max={filtered.length} value={index} />
+  {/if}
+  {#if filtered != null}
     {#key filtered[index]._id}
       <Flashcard data={filtered[index]} on:toNext={nextCard} />
     {/key}
   {/if}
-  <br />
   <button on:click={nextCard}>Next card (Space)</button>
 </div>
 
 <style>
   .app-container {
-    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+  }
+
+  progress {
+    width: min(400px, 80vw);
+  }
+
+  button {
+    margin-top: 30px;
   }
 </style>

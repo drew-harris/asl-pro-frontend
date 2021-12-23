@@ -1,6 +1,7 @@
 <script>
   export let data;
   import { createEventDispatcher } from "svelte";
+  import { fade, fly } from "svelte/transition";
 
   // boilerplate required to produce events
   const dispatch = createEventDispatcher();
@@ -20,9 +21,16 @@
   }
 </script>
 
-<div on:click={flip} class="card">
+<div
+  in:fly={{ x: 400, duration: 200, delay: 300 }}
+  out:fly={{ x: -400, duration: 200 }}
+  on:click={flip}
+  class="card"
+>
   <!-- svelte-ignore a11y-media-has-caption -->
-  <video src={"https://drewh.net/aslcards/" + data.filename} autoplay loop />
+  <div class="video-container">
+    <video src={"https://drewh.net/aslcards/" + data.filename} autoplay loop />
+  </div>
   {#if flipped}
     <div class="word">{data.word}</div>
     <div class="tag">{data.tag}</div>
@@ -34,6 +42,7 @@
 
 <style>
   .card {
+    max-width: 500px;
     border: 1px solid #c4c4c4;
     padding: 20px;
     margin: 20px;
@@ -44,6 +53,13 @@
     margin: auto;
     width: 100% !important;
     height: auto !important;
+    transform-origin: top;
+    transform: scale(1.35);
+  }
+
+  .video-container {
+    overflow: hidden;
+    width: 100%;
   }
 
   .word {

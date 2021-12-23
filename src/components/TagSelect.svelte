@@ -6,7 +6,8 @@
   const dispatch = createEventDispatcher();
   console.log(tagList);
   $: console.log(tagList);
-  let selected = null;
+  let selected = "";
+
   function setSelected(tag) {
     dispatch("newTag", { tag: tag });
     selected = tag;
@@ -27,11 +28,14 @@
 </div>
 
 <style>
+  @media only screen and (max-width: 600px) {
+    .tag-container {
+      flex-direction: column;
+    }
+  }
   .tag-container {
     display: flex;
-    gap: 25px;
     border: 1px solid #c4c4c4;
-    padding: 20px;
     margin: 20px;
     border-radius: 4px;
     box-shadow: 0px 5px 4px rgba(95, 95, 95, 0.267);
@@ -39,9 +43,13 @@
 
   .tag {
     cursor: pointer;
+    padding: 10px 30px 10px 30px;
+    flex-grow: 1;
+    text-align: center;
   }
 
   .selected {
     text-decoration: underline;
+    background-color: #e0e0e0;
   }
 </style>
