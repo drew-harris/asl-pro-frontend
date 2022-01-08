@@ -1,3 +1,28 @@
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: rgb(12, 12, 12);
+		--off-background: rgb(29, 29, 29);
+		--root-button-border: rgb(51, 51, 51);
+		--button-background: rgb(51, 51, 51);
+		--text: rgb(255, 255, 255);
+		--off-text: rgb(204, 204, 204);
+		--tag-border: rgb(51, 51, 51);
+		--selected: rgb(51, 51, 51);
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--background: rgb(233, 233, 233);
+		--off-background: rgb(245, 245, 245);
+		--button-background: #f4f4f4;
+		--tag-border: #949494;
+		--selected: #b9b9b9;
+		--root-button-border: rgb(161, 161, 161);
+	}
+}
+
 html, body {
 	position: relative;
 	width: 100%;
@@ -16,6 +41,7 @@ body {
 	-ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 	overflow-y: hidden;
+	background-color: var(--background);
 }
 body::-webkit-scrollbar {
   display: none;
@@ -45,7 +71,7 @@ input, button, select, textarea {
 	padding: 0.4em;
 	margin: 0 0 0.5em 0;
 	box-sizing: border-box;
-	border: 1px solid #ccc;
+	border: 1px solid var(--root-button-border);
 	border-radius: 2px;
 }
 
@@ -54,8 +80,9 @@ input:disabled {
 }
 
 button {
-	color: #333;
-	background-color: #f4f4f4;
+	color: var(--text);
+	background-color: var(--button-background);
+	border: 1px solid var(--root-button-border);
 	outline: none;
 }
 

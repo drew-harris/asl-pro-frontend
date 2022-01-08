@@ -52,11 +52,12 @@
   }
   .card {
     max-width: 420px;
-    border: 1px solid #c4c4c4;
+    border: 1px solid var(--root-button-border);
     padding: 20px;
     margin: 10px auto;
     border-radius: 4px;
     box-shadow: 0px 5px 4px rgba(95, 95, 95, 0.267);
+    background-color: var(--off-background);
   }
   video {
     margin: auto;
@@ -72,7 +73,7 @@
     font-size: 2rem;
     margin: auto;
     text-align: center;
-    color: black;
+    color: var(--text);
     margin-top: 10px;
   }
 
@@ -80,7 +81,7 @@
     margin: auto;
     margin-top: 10px;
     text-align: center;
-    color: rgb(199, 199, 199);
+    color: var(--off-text);
     cursor: pointer;
   }
 

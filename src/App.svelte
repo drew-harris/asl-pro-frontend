@@ -82,6 +82,8 @@
     margin: 10px auto;
     width: min(400px, 80vw);
     height: 15px;
+    background-color: var(--off-background);
+    border: 1px solid var(--tag-border);
   }
 
   .progress-container {
