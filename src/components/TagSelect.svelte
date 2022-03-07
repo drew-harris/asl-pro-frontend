@@ -9,30 +9,39 @@
   let selected = "";
 
   function setSelected(tag) {
-    dispatch("newTag", { tag: tag });
-    selected = tag;
+    dispatch("newTag", { tag: selected });
   }
 </script>
 
-<div class="tag-container">
-  {#if tagList != null}
+{#if tagList != null}
+  <select bind:value={selected} on:change={setSelected}>
     {#each tagList as tag}
-      <div
-        class={tag == selected ? "tag selected" : "tag"}
-        on:click={setSelected(tag)}
-      >
-        {tag != "" ? tag : "All cards"}
-      </div>
+      {#if tag == ""}
+        <option value={tag}>All Cards</option>
+      {:else}
+        <option value={tag}>{tag}</option>
+      {/if}
     {/each}
-  {/if}
-</div>
+  </select>
+{/if}
 
 <style>
   @media only screen and (max-width: 600px) {
-    .tag-container {
-      flex-direction: column;
-    }
   }
+
+  select {
+    background-color: var(--tag-border);
+    color: var(--text);
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  option {
+    color: var(--text);
+  }
+
   .tag-container {
     max-width: 500px;
     display: flex;
@@ -41,17 +50,5 @@
     border-radius: 4px;
     box-shadow: 0px 5px 4px rgba(95, 95, 95, 0.267);
     color: var(--text);
-  }
-
-  .tag {
-    cursor: pointer;
-    padding: 10px 20px 10px 20px;
-    flex-grow: 1;
-    text-align: center;
-  }
-
-  .selected {
-    text-decoration: underline;
-    background-color: var(--selected);
   }
 </style>

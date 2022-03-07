@@ -25,6 +25,30 @@
     index++;
   }
 
+  function shuffle(array) {
+    let currentIndex = array.length,
+      randomIndex;
+
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  }
+
+  function applyShuffle() {
+    filtered = shuffle(filtered);
+  }
+
   function applyFilter(event) {
     console.log(event.detail.tag);
     console.log("applying tag", event.detail.tag);
@@ -49,6 +73,9 @@
       <progress max={filtered.length} value={index} />
     </div>
   {/if}
+  <div class="button-container">
+    <button on:click={applyShuffle}>Shuffle</button>
+  </div>
   {#if filtered != null}
     {#key filtered[index]._id}
       <Flashcard data={filtered[index]} on:toNext={nextCard} />
