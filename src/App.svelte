@@ -12,7 +12,7 @@
 
   async function getCards() {
     tags = await getTags();
-    const response = await fetch("https://drewh.net/aslapi/");
+    const response = await fetch("https://asl-pro-backend-tiqnquj5mq-uc.a.run.app/aslapi");
     const d = await response.json();
     data = d;
     filtered = d;
